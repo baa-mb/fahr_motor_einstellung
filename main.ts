@@ -22,13 +22,29 @@ input.onButtonPressed(Button.B, function () {
     oben = !(oben)
 })
 function startimpuls () {
+    robotbit.MotorStopAll()
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        # # # # #
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(100)
     robotbit.MotorRunDual(
     robotbit.Motors.M1A,
     start_speed,
-    robotbit.Motors.M2A,
-    start_speed
+    robotbit.Motors.M1B,
+    start_speed * rad_faktor
     )
     basic.pause(100)
+    basic.showLeds(`
+        . # # # .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 }
 let speed = 0
 let oben = false
@@ -36,6 +52,7 @@ let gerade_rad = 0
 let gerade_get = 0
 let kurve_rad = 0
 let kurve_get = 0
+let rad_faktor = 0
 let start_speed = 0
 let hebe_winkel = 0
 let abstand = 0
@@ -49,16 +66,18 @@ hebe_winkel = 70
 let motor_links = robotbit.Motors.M1A
 let motor_rechts = robotbit.Motors.M2A
 robotbit.MotorStopAll()
-start_speed = 120
-let nomove_value = 5
-let limit = 12
-let diff = 10
-let zzz = nomove_value
+basic.pause(1000)
+let zzz_vorgabe = 4
+let zzz = zzz_vorgabe
+start_speed = 100
+let step_size = 10
+rad_faktor = 10
+let limit = 10
 startimpuls()
 basic.forever(function () {
     led.plot(zzz % 5, 4 - Math.floor(zzz / 5))
     if (zzz >= limit) {
-        zzz = nomove_value
+        zzz = zzz_vorgabe
         basic.showIcon(IconNames.Heart)
         startimpuls()
         basic.showLeds(`
@@ -71,13 +90,13 @@ basic.forever(function () {
     } else {
         zzz += 1
     }
-    speed = zzz * diff
-    serial.writeValue("x", speed)
+    speed = zzz * step_size * -1
+    serial.writeValue("speed", speed)
     robotbit.MotorRunDual(
     robotbit.Motors.M1A,
     speed,
-    robotbit.Motors.M2A,
-    speed
+    robotbit.Motors.M1B,
+    speed * rad_faktor
     )
     basic.pause(2000)
 })
