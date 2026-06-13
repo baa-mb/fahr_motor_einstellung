@@ -1,11 +1,15 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    serial.writeValue("x", receivedNumber)
-    if (receivedNumber == 0) {
-        zzz += -1
-    } else if (receivedNumber == 1) {
-    	
-    } else {
-        zzz += 0
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    zzz += receivedNumber
+    if (receivedNumber == 2) {
+        zzz = zzz_vorgabe
+        rad_faktor = rad_faktor + 0.05
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -15,21 +19,23 @@ function startimpuls (v: number) {
     robotbit.MotorRunDual(
     robotbit.Motors.M1A,
     v * richtung,
-    robotbit.Motors.M1B,
+    robotbit.Motors.M2A,
     v * richtung * rad_faktor
     )
 }
 let speed = 0
 let rad_faktor = 0
+let zzz = 0
+let zzz_vorgabe = 0
 let richtung = 0
 robotbit.MotorStopAll()
 basic.pause(1000)
 richtung = 1
-let zzz_vorgabe = 4
-let zzz = zzz_vorgabe
-let start_speed = 100
+zzz_vorgabe = 4
+zzz = zzz_vorgabe
+let start_speed = 110
 let step_size = 10
-rad_faktor = 1.1
+rad_faktor = 0.95
 let limit = 14
 startimpuls(start_speed)
 basic.forever(function () {
