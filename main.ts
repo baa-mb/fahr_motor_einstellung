@@ -7,9 +7,9 @@ input.onButtonPressed(Button.A, function () {
     werte_rechnen(-1)
 })
 function init () {
-    start_speed = 90
+    start_speed = 110
     step_size = 10
-    rad_faktor = 1.2
+    rad_faktor = 1
     limit = 16
     startimpuls(start_speed)
     basic.showIcon(IconNames.SmallHeart)
