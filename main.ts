@@ -1,4 +1,12 @@
-radio.onReceivedNumber(function (receivedNumber) {
+/**
+ * radio.onReceivedNumber(function (receivedNumber) {
+ */
+// })
+input.onButtonPressed(Button.A, function () {
+    // radio.sendNumber(-1)
+    werte_rechnen(-1)
+})
+function werte_rechnen (receivedNumber: number) {
     basic.clearScreen()
     if (receivedNumber == 2) {
         zzz = zzz_vorgabe
@@ -9,6 +17,10 @@ radio.onReceivedNumber(function (receivedNumber) {
         rad_faktor = rad_faktor * 1
     }
     zzz += receivedNumber
+}
+input.onButtonPressed(Button.AB, function () {
+    radio.sendNumber(2)
+    werte_rechnen(-2)
 })
 input.onButtonPressed(Button.B, function () {
     richtung = richtung * -1
@@ -42,6 +54,7 @@ let step_size = 10
 rad_faktor = 1
 let limit = 16
 startimpuls(start_speed)
+basic.showIcon(IconNames.SmallHeart)
 basic.forever(function () {
     basic.showNumber(zzz % 10)
     // zzz += 1
