@@ -10,7 +10,7 @@ function init () {
     start_speed = 110
     step_size = 10
     rad_faktor = 1
-    limit = 16
+    limit = 14
     startimpuls(start_speed)
     basic.showIcon(IconNames.SmallHeart)
 }
@@ -59,7 +59,7 @@ let richtung = 0
 robotbit.MotorStopAll()
 basic.pause(1000)
 richtung = 1
-zzz_vorgabe = 5
+zzz_vorgabe = 4
 zzz = zzz_vorgabe
 init()
 basic.forever(function () {
