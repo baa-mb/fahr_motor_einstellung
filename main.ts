@@ -27,8 +27,9 @@ function werte_rechnen (receivedNumber: number) {
     zzz += receivedNumber
 }
 input.onButtonPressed(Button.AB, function () {
-    radio.sendNumber(2)
-    werte_rechnen(-2)
+    zzz_vorgabe = zzz_vorgabe + -1
+    zzz = zzz_vorgabe
+    init()
 })
 input.onButtonPressed(Button.B, function () {
     // radio.sendNumber(-1)
