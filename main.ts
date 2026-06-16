@@ -1,11 +1,19 @@
-/**
- * radio.onReceivedNumber(function (receivedNumber) {
- */
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    init()
+})
 // })
 input.onButtonPressed(Button.A, function () {
     // radio.sendNumber(-1)
     werte_rechnen(-1)
 })
+function init () {
+    start_speed = 90
+    step_size = 10
+    rad_faktor = 1.2
+    limit = 16
+    startimpuls(start_speed)
+    basic.showIcon(IconNames.SmallHeart)
+}
 function werte_rechnen (receivedNumber: number) {
     basic.clearScreen()
     if (receivedNumber == 2) {
@@ -23,7 +31,8 @@ input.onButtonPressed(Button.AB, function () {
     werte_rechnen(-2)
 })
 input.onButtonPressed(Button.B, function () {
-    richtung = richtung * -1
+    // radio.sendNumber(-1)
+    werte_rechnen(1)
 })
 function startimpuls (v: number) {
     robotbit.MotorRunDual(
@@ -40,7 +49,10 @@ function startimpuls (v: number) {
     )
 }
 let speed = 0
+let limit = 0
 let rad_faktor = 0
+let step_size = 0
+let start_speed = 0
 let zzz = 0
 let zzz_vorgabe = 0
 let richtung = 0
@@ -49,12 +61,7 @@ basic.pause(1000)
 richtung = 1
 zzz_vorgabe = 5
 zzz = zzz_vorgabe
-let start_speed = 100
-let step_size = 10
-rad_faktor = 1
-let limit = 16
-startimpuls(start_speed)
-basic.showIcon(IconNames.SmallHeart)
+init()
 basic.forever(function () {
     basic.showNumber(zzz % 10)
     // zzz += 1
