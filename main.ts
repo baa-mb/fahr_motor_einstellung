@@ -70,13 +70,7 @@ basic.forever(function () {
         zzz = zzz_vorgabe
         basic.showIcon(IconNames.Heart)
         startimpuls(start_speed)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
+        basic.clearScreen()
     } else {
     	
     }
