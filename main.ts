@@ -2,22 +2,30 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     logotouch()
 })
 function logotouch () {
+    robotbit.MotorStopAll()
     basic.showNumber(rad_faktor)
     autolauf = 0
-    robotbit.MotorStopAll()
     basic.pause(500)
     zzz = zzz_vorgabe
     for (let index = zzz_vorgabe; index < limit; index++) {
-        basic.showNumber(zzz % 10)
+        basic.showNumber(index % 10)
         zzz += 1
         dauerschleife(1)
-        basic.pause(200)
+        basic.pause(100)
     }
 robotbit.MotorStopAll()
+    basic.showLeds(`
+        . . # . .
+        . # . # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
 }
 // })
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
+    basic.showNumber(rad_faktor)
 })
 function drehimpuls (v: number) {
     robotbit.MotorRunDual(
@@ -44,7 +52,13 @@ function init () {
     basic.showIcon(IconNames.SmallHeart)
     robotbit.MotorStopAll()
     basic.showNumber(rad_faktor)
-    logotouch()
+    basic.showLeds(`
+        . . # . .
+        . # . # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
 }
 function werte_rechnen (receivedNumber: number) {
     basic.clearScreen()
@@ -65,6 +79,7 @@ input.onButtonPressed(Button.AB, function () {
 })
 input.onButtonPressed(Button.B, function () {
     rad_faktor += 0.1
+    basic.showNumber(rad_faktor)
 })
 function dauerschleife (warte: number) {
     basic.showNumber(zzz % 10)
@@ -87,9 +102,9 @@ let start_speed = 0
 let rad_faktor = 0
 let autolauf = 0
 let richtung = 0
+let limit = 0
 let zzz_vorgabe = 0
 let zzz = 0
-let limit = 0
 robotbit.MotorStopAll()
 basic.pause(1000)
 richtung = 1
