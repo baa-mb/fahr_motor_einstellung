@@ -43,7 +43,7 @@ function logotouch() {
         }
         robotbit.MotorStopAll()
     }
-    basic.showString("E" + rad_faktor )
+    basic.showString("E" + rad_faktor)
 }
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
