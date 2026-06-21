@@ -8,20 +8,30 @@ function logotouch() {
     basic.pause(500)
     zzz = zzz_vorgabe
 
-    basic.showLeds(`
+
+    let v_arr = "7,8,9,10,11,12,13,14,15,16,15,10,9,8,7,6,5,4,3"
+        .split(",")
+        .map(s => parseInt(s))
+
+    for (let index = 0; index < 5; index++) {
+        basic.showLeds(`
         . . # . .
         . # . # .
         # . . . #
         . . . . .
         . . . . .
         `)
-    let v_arr = "7,8,9,10,11,12,13,14,15,16,15,10,9,8,7,6,5,4,3"
-        .split(",")
-        .map(s => parseInt(s))
-
-    for (let index = 0; index < 5; index++) {
         for (let index = 0; index <= v_arr.length - 1; index++) {
+
             wert = v_arr[index]
+            if (wert == 15)
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # . . . #
+                    . # . # .
+                    . . # . .
+                    `)
             basic.showNumber(wert % 10)
             zzz = wert
             // dauerschleife(1)
@@ -30,13 +40,7 @@ function logotouch() {
         }
         robotbit.MotorStopAll()
     }
-    basic.showLeds(`
-        . . # . .
-        . # . # .
-        # . # . #
-        . . # . .
-        . . # . .
-        `)
+    basic.showString("E" + rad_faktor )
 }
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
@@ -52,18 +56,14 @@ input.onButtonPressed(Button.B, function () {
     basic.showNumber(rad_faktor)
 })
 function drehimpuls(v: number) {
+
     robotbit.MotorRunDual(
         robotbit.Motors.M1A,
         v * richtung,
         robotbit.Motors.M2A,
         v * richtung * rad_faktor
     )
-    robotbit.MotorRunDual(
-        robotbit.Motors.M1B,
-        v * richtung,
-        robotbit.Motors.M2B,
-        v * richtung * rad_faktor
-    )
+
 }
 function init() {
     zzz_vorgabe = 5
