@@ -7,6 +7,8 @@ function logotouch () {
     autolauf = 0
     basic.pause(500)
     zzz = zzz_vorgabe
+    v_arr = [7, 8, 9, 10, 11, 12, 13, 14, 15,16,15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
     for (let index = 0; index <= v_arr.length - 1; index++) {
         basic.showNumber(index % 10)
         zzz += 1
