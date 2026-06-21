@@ -7,7 +7,7 @@ function logotouch() {
     autolauf = 0
     basic.pause(500)
     zzz = zzz_vorgabe
-    v_arr = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    v_arr = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 15, 10, 9, 8, 7, 6, 5, 4, 3]
     for (let i = 0; i < 3; i++) {
         for (let index = 0; index <= v_arr.length - 1; index++) {
             let wert = v_arr[index]
