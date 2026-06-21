@@ -19,7 +19,7 @@ function logotouch() {
         .split(",")
         .map(s => parseInt(s))
 
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 5; index++) {
         for (let index = 0; index <= v_arr.length - 1; index++) {
             wert = v_arr[index]
             basic.showNumber(wert % 10)
