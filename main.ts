@@ -43,6 +43,12 @@ input.onButtonPressed(Button.A, function () {
     basic.showNumber(rad_faktor)
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
 })
+
+input.onButtonPressed(Button.B, function () {
+    rad_faktor += 0.1
+    basic.showNumber(rad_faktor)
+    music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
+})
 function drehimpuls (v: number) {
     robotbit.MotorRunDual(
     robotbit.Motors.M1A,
@@ -94,11 +100,7 @@ input.onButtonPressed(Button.AB, function () {
     zzz = zzz_vorgabe
     init()
 })
-input.onButtonPressed(Button.B, function () {
-    rad_faktor += 0.1
-    basic.showNumber(rad_faktor)
-    music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
-})
+
 function dauerschleife (warte: number) {
     basic.showNumber(zzz % 10)
     // zzz += 1
