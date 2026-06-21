@@ -40,14 +40,16 @@ function logotouch() {
 }
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
-    basic.showNumber(rad_faktor)
+
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
+    basic.showNumber(rad_faktor)
 })
 
 input.onButtonPressed(Button.B, function () {
     rad_faktor += 0.1
-    basic.showNumber(rad_faktor)
+
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
+    basic.showNumber(rad_faktor)
 })
 function drehimpuls(v: number) {
     robotbit.MotorRunDual(
