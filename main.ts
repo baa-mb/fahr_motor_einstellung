@@ -32,6 +32,7 @@ function logotouch() {
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
     basic.showNumber(rad_faktor)
+    music.ringTone(Note.C)
 })
 function drehimpuls(v: number) {
     robotbit.MotorRunDual(
@@ -87,6 +88,7 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     rad_faktor += 0.1
     basic.showNumber(rad_faktor)
+    music.ringTone(Note.C)
 })
 function dauerschleife(warte: number) {
     basic.showNumber(zzz % 10)
