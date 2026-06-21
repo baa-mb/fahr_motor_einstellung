@@ -28,7 +28,7 @@ function logotouch() {
         . . # . .
         `)
 }
-// })
+
 input.onButtonPressed(Button.A, function () {
     rad_faktor += -0.1
     basic.showNumber(rad_faktor)
@@ -65,6 +65,7 @@ function init() {
         . . # . .
         . . # . .
         `)
+    logotouch()
 }
 function werte_rechnen(receivedNumber: number) {
     basic.clearScreen()
