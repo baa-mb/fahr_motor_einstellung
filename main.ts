@@ -21,10 +21,13 @@ function logotouch() {
         . . . . .
         . . . . .
         `)
+
+
+
         for (let index = 0; index <= v_arr.length - 1; index++) {
 
-            wert = v_arr[index]
-            if (wert == 15)
+            zzz = v_arr[index]
+            if (zzz == 15)
                 basic.showLeds(`
                     . . . . .
                     . . . . .
@@ -32,8 +35,8 @@ function logotouch() {
                     . # . # .
                     . . # . .
                     `)
-            basic.showNumber(wert % 10)
-            zzz = wert
+            basic.showNumber(zzz % 10)
+
             // dauerschleife(1)
             drehimpuls(10 * zzz)
             basic.pause(500)
